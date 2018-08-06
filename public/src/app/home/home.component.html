@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <app-navbar></app-navbar>
+    <h1 *ngIf="user.firstName">Hello, {{ user.firstName }} {{ user.lastName }}</h1>
+    <h1 *ngIf="!user.firstName">WARNING: You are not authorized to view this amazing site.</h1>  
+   <h1 *ngIf="!user.firstName">Please log in first, pal.</h1>
+
+   <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click Me!</button>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+   <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Grandma's favorite limerick</h4>
+      </div>
+      <div class="modal-body">
+        <p>There once was a man from Nantucket.</p>
+        <p>Whose dick was so long he could suck it.</p>
+        <p>He said with grin (as he wiped off his chin),</p>
+        <p>"If my ear was a cunt I would fuck it".</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+ </div>
+</div>

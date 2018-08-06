@@ -1,0 +1,118 @@
+<!-- LOGIN -->
+
+<div class="row">
+  <app-navbar></app-navbar>
+  <div class="col-md-12">
+    <div class="jumbotron infoBox">
+      <h1 [ngStyle]="{'text-align': 'center'}">Welcome to The Internet.</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  
+
+<!-- REGISTER -->
+
+  <div class="col-md-12">
+    <div class="col-md-6 center">
+    <h1 class="right">please register</h1>
+      <form (submit)='createUser()' #formData='ngForm' class="form-horizontal">
+        <div class="form-group">
+          <span *ngIf="firstName.errors"><label class="control-label col-sm-2" for="firstName">----></label></span>
+          <span *ngIf="!firstName.errors"><label class="control-label col-sm-2" for="firstName">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="firstName" 
+              placeholder="Enter first name"
+              required
+              minlength="2"
+              maxlength="30"
+              [(ngModel)]="user.firstName"
+              #firstName="ngModel">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span *ngIf="lastName.errors"><label class="control-label col-sm-2" for="lastName">----></label></span>
+            <span *ngIf="!lastName.errors"><label class="control-label col-sm-2" for="lastName">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="lastName" 
+              placeholder="Enter last name"
+              required
+              minlength="2"
+              maxlength="30"
+              [(ngModel)]="user.lastName"
+              #lastName="ngModel">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span *ngIf="email.errors"><label class="control-label col-sm-2" for="email">----></label></span>
+            <span *ngIf="!email.errors"><label class="control-label col-sm-2" for="email">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="email" 
+              pattern="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$" 
+              required minlength="5" 
+              maxlength="30"
+              placeholder="Enter email"
+              required
+              [(ngModel)]="user.email" 
+              #email='ngModel'>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span *ngIf="password.errors"><label class="control-label col-sm-2" for="password">----></label></span>
+            <span *ngIf="!password.errors"><label class="control-label col-sm-2" for="password">-OK-></label></span>
+          <div class="col-sm-10"> 
+            <input 
+              type="password" 
+              class="form-control" 
+              name="password" 
+              required
+              placeholder="Enter password" 
+              minlength="8" 
+              maxlength="32"  
+              pattern="^([a-zA-Z0-9@*#]{8,32})$"
+              [(ngModel)]="user.password"
+              #password='ngModel'>
+          </div>
+        </div>
+        <div class="form-group">
+            <span *ngIf="confirm.errors"><label class="control-label col-sm-2" for="confirm">----></label></span>
+            <span *ngIf="!confirm.errors"><label class="control-label col-sm-2" for="confirm">-OK-></label></span>
+          <div class="col-sm-10"> 
+            <input 
+              class="form-control" 
+              type="password" 
+              name="confirm"
+              placeholder="Confirm password"
+              required minlength="8" 
+              maxlength="32"  
+              [(ngModel)]="user.confirm" 
+              pattern="^([a-zA-Z0-9]{8,32})$" 
+              #confirm='ngModel'>
+              <div class='errors' *ngIf="user.confirm !== user.password">Passwords must match.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input 
+              type="submit" 
+              class="btn btn-default" [disabled]="user.confirm !== user.password || !formData.valid"
+              value="Register">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
